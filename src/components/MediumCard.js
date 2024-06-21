@@ -5,7 +5,7 @@ function MediumCard({ img, title }) {
       <div className="relative h-80 w-80">
         <Image src={img} alt="" layout="fill" className="rounded-xl" />
       </div>
-      <h3 className="sm:text-2xl mt-3">{title}</h3>
+      <h3 className="sm:text-2xl  mt-3">{title}</h3>
     </div>
   );
 }
