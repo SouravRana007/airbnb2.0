@@ -9,7 +9,7 @@ import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRangePicker } from "react-date-range";
 import { useRouter } from "next/router";
-function Header() {
+function Header({ placeholder }) {
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -62,20 +62,20 @@ function Header() {
           onChange={(e) => setSearchInput(e.target.value)}
           className="pl-5 bg-transparent outline-none flex-grow text-sm text-gray-600 placeholder-gray-400"
           type="text"
-          placeholder="start your search"
+          placeholder={placeholder || "start your search"}
         />
         <SearchIcon
           onClick={search}
-          className="hidden md:inline-flex h-7 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2"
+          className="hidden md:inline-flex h-7 bg-red-400 active:bg-gray-100 text-white rounded-full p-2 cursor-pointer md:mx-2"
         />
       </div>
       {/* right side div */}
       <div className="flex items-center space-x-4 justify-end  text-gray-600  ">
         <p className="hidden md:inline cursor-pointer">Airbnb your Home</p>
         <GlobeAltIcon className="h-6 cursor-pointer" />
-        <div className="flex items-center space-x-2 border-2 rounded-full p-2 cursor pointer">
-          <MenuIcon className="h-6 " />
-          <UserIcon className="h-6" />
+        <div className="flex items-center space-x-2 border-2 rounded-full p-2 active:scale-90 transition transform duration-150">
+          <MenuIcon className="h-6 cursor-pointer " />
+          <UserIcon className="h-6 cursor-pointer " />
         </div>
       </div>
       {searchInput && (
