@@ -27,7 +27,11 @@ function Header({ placeholder }) {
     endDate: endDate,
     key: "selection",
   };
-
+  const register = () => {
+    router.push({
+      pathname: "/register",
+    });
+  };
   const search = () => {
     router.push({
       pathname: "/search",
@@ -71,7 +75,12 @@ function Header({ placeholder }) {
       </div>
       {/* right side div */}
       <div className="flex items-center space-x-4 justify-end  text-gray-600  ">
-        <p className="hidden md:inline cursor-pointer">Airbnb your Home</p>
+        <p
+          className="hidden md:inline cursor-pointer hover:text-xl hover:text-red-400"
+          onClick={register}
+        >
+          Airbnb your Home
+        </p>
         <GlobeAltIcon className="h-6 cursor-pointer" />
         <div className="flex items-center space-x-2 border-2 rounded-full p-2 active:scale-90 transition transform duration-150">
           <MenuIcon className="h-6 cursor-pointer " />

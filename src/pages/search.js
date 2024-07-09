@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import InfoCard from "@/components/InfoCard";
+// import Maps from "@/components/Maps";
 
 function Search({ searchResults }) {
   console.log(searchResults);
@@ -48,6 +49,9 @@ function Search({ searchResults }) {
               )
             )}
           </div>
+        </section>
+        <section className="hidden xl:inline-flex xl:min-w-[600px]">
+          {/* <Maps /> */}
         </section>
       </main>
       <Footer />
