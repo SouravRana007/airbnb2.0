@@ -84,12 +84,11 @@ function Header({ placeholder }) {
 
         <GlobeAltIcon className=" hidden md:inline h-6 cursor-pointer" />
         <div className="flex items-center space-x-2 border-2 rounded-full p-2 active:scale-90 transition transform duration-150">
-          <button
+          <MenuIcon
             className="h-6 cursor-pointer  text-bold px-2 active:text-red-400"
             onClick={register}
-          >
-            Sign-in
-          </button>
+          />
+
           <UserIcon className="h-6 cursor-pointer " />
         </div>
       </div>
