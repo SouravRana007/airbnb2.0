@@ -76,14 +76,20 @@ function Header({ placeholder }) {
       {/* right side div */}
       <div className="flex items-center space-x-4 justify-end  text-gray-600  ">
         <p
-          className="hidden md:inline cursor-pointer hover:text-xl hover:text-red-400"
+          className="hidden md:inline cursor-pointer hover:text-lg active:text-red-400"
           onClick={register}
         >
           Airbnb your Home
         </p>
-        <GlobeAltIcon className="h-6 cursor-pointer" />
+
+        <GlobeAltIcon className=" hidden md:inline h-6 cursor-pointer" />
         <div className="flex items-center space-x-2 border-2 rounded-full p-2 active:scale-90 transition transform duration-150">
-          <MenuIcon className="h-6 cursor-pointer " />
+          <button
+            className="h-6 cursor-pointer  text-bold px-2 active:text-red-400"
+            onClick={register}
+          >
+            Sign-in
+          </button>
           <UserIcon className="h-6 cursor-pointer " />
         </div>
       </div>
