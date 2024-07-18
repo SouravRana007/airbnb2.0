@@ -5,11 +5,14 @@ import MenuIcon from "@heroicons/react/24/solid/Bars3Icon";
 import UserIcon from "@heroicons/react/24/solid/UserCircleIcon";
 import GuestIcon from "@heroicons/react/24/solid/UsersIcon";
 import { useState } from "react";
-import "react-date-range/dist/styles.css";
-import "react-date-range/dist/theme/default.css";
 import { DateRangePicker } from "react-date-range";
 import { useRouter } from "next/router";
+import { signOut, useSession } from "next-auth/react";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
+
 function Header({ placeholder }) {
+  const { data: session } = useSession();
   const [searchInput, setSearchInput] = useState("");
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -29,7 +32,7 @@ function Header({ placeholder }) {
   };
   const register = () => {
     router.push({
-      pathname: "/register",
+      pathname: "/login",
     });
   };
   const search = () => {
@@ -66,7 +69,7 @@ function Header({ placeholder }) {
           onChange={(e) => setSearchInput(e.target.value)}
           className="pl-5 bg-transparent outline-none flex-grow text-sm text-gray-600 placeholder-gray-400"
           type="text"
-          placeholder={placeholder || "start your search"}
+          placeholder={placeholder || "Start your search"}
         />
         <SearchIcon
           onClick={search}
@@ -77,18 +80,26 @@ function Header({ placeholder }) {
       <div className="flex items-center space-x-4 justify-end  text-gray-600  ">
         <p
           className="hidden md:inline cursor-pointer hover:text-lg active:text-red-400"
-          onClick={register}
+          onClick={session?.user?.name ? null : () => register()}
         >
-          Airbnb your Home
+          {session?.user?.name
+            ? `Welcome ${session?.user?.name}`
+            : "Airbnb your Home"}
         </p>
-
+        {session?.user?.name && (
+          <p
+            className="hidden md:inline cursor-pointer hover:text-lg active:text-red-400"
+            onClick={signOut}
+          >
+            Logout
+          </p>
+        )}
         <GlobeAltIcon className=" hidden md:inline h-6 cursor-pointer" />
         <div className="flex items-center space-x-2 border-2 rounded-full p-2 active:scale-90 transition transform duration-150">
           <MenuIcon
             className="h-6 cursor-pointer  text-bold px-2 active:text-red-400"
             onClick={register}
           />
-
           <UserIcon className="h-6 cursor-pointer " />
         </div>
       </div>
