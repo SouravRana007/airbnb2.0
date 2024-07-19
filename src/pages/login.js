@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/image";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { signIn, useSession } from "next-auth/react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
 

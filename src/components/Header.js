@@ -79,7 +79,7 @@ function Header({ placeholder }) {
       {/* right side div */}
       <div className="flex items-center space-x-4 justify-end  text-gray-600  ">
         <p
-          className="hidden md:inline cursor-pointer hover:text-lg active:text-red-400"
+          className="hidden md:inline cursor-pointer hover:text-lg hover:text-red-400"
           onClick={session?.user?.name ? null : () => register()}
         >
           {session?.user?.name
@@ -88,20 +88,34 @@ function Header({ placeholder }) {
         </p>
         {session?.user?.name && (
           <p
-            className="hidden md:inline cursor-pointer hover:text-lg active:text-red-400"
+            className="hidden md:inline cursor-pointer hover:text-lg hover:text-red-400"
             onClick={signOut}
           >
             Logout
           </p>
         )}
         <GlobeAltIcon className=" hidden md:inline h-6 cursor-pointer" />
-        <div className="flex items-center space-x-2 border-2 rounded-full p-2 active:scale-90 transition transform duration-150">
+        <div className="flex items-center space-x-1 border-2 rounded-xl px-2 py-1 ">
           <MenuIcon
-            className="h-6 cursor-pointer  text-bold px-2 active:text-red-400"
+            className="h-6 cursor-pointer hidden md:inline text-bold px-2 active:text-red-400"
             onClick={register}
           />
-          <UserIcon className="h-6 cursor-pointer " />
+          <button
+            className="md:hidden text-gray-600 text-lg flex items-end text-end"
+            onClick={register}
+          >
+            Login
+          </button>
+          <UserIcon className="h-6 cursor-pointer " onClick={register} />
         </div>
+      </div>
+      <div className="flex justify-center items-center">
+        <button
+          onClick={signOut}
+          className="border-2 px-2 py-1  md:hidden rounded-xl  mt-4"
+        >
+          Logout
+        </button>
       </div>
       {searchInput && (
         <div className="flex flex-col col-span-3 mx-auto mt-3">

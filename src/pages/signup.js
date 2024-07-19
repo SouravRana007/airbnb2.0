@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Validation from "../lib/validation";
+import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+
 function Signup() {
   const [formData, setformData] = useState({
     name: "",
@@ -15,6 +18,7 @@ function Signup() {
       [e.target.name]: e.target.value,
     });
   };
+  const router = useRouter();
   const registerUser = async (e) => {
     // console.log("register clicker");
     e.preventDefault();
@@ -51,12 +55,13 @@ function Signup() {
         body: JSON.stringify(formData),
       });
       if (res.ok) {
-        alert("user created!");
+        toast.success("User created successfully!");
+        router.push("/login");
       } else {
         throw new Error();
       }
     } catch (err) {
-      alert("Something went wrong!");
+      toast.error("Something went wrong!");
     }
   };
   return (
