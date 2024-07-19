@@ -109,13 +109,21 @@ function Header({ placeholder }) {
           <UserIcon className="h-6 cursor-pointer " onClick={register} />
         </div>
       </div>
-      <div className="flex justify-center items-center">
-        <button
-          onClick={signOut}
-          className="border-2 px-2 py-1  md:hidden rounded-xl  mt-4"
+      <div className="flex  mt-4 items-center space-x-2 justify-end text-center  ">
+        <p
+          className="md:hidden px-2 py-2  border-2 border-red-400  rounded-lg cursor-pointer  hover:text-red-400"
+          onClick={session?.user?.name ? null : () => register()}
         >
-          Logout
-        </button>
+          {session?.user?.name ? ` ${session?.user?.name}` : "Airbnb your Home"}
+        </p>
+        {session?.user?.name && (
+          <p
+            onClick={signOut}
+            className=" px-2 py-1  md:hidden hover:text-red-500 rounded-xl "
+          >
+            Logout
+          </p>
+        )}
       </div>
       {searchInput && (
         <div className="flex flex-col col-span-3 mx-auto mt-3">

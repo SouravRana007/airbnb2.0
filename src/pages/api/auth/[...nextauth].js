@@ -11,7 +11,6 @@ export default NextAuth({
       name: "Credentials",
       async authorize(credentials) {
         await dbConnect();
-
         const user = await User.findOne({ email: credentials.email });
         if (!user) {
           throw new Error("No user found with the email");

@@ -109,6 +109,7 @@ function Signup() {
                     name="name"
                     className=" border border-red-400 text-gray-600 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-white :border-gray-600 placeholder-gray-500  "
                     placeholder="Fullname"
+                    required
                   />
                   {error.name && <p>{error.name}</p>}
                 </div>
@@ -125,6 +126,7 @@ function Signup() {
                     onChange={handleOnchange}
                     type="email"
                     name="email"
+                    required
                     className=" border border-red-400 text-gray-600 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 bg-white :border-gray-600 placeholder-gray-500  "
                     placeholder="name123@gmail.com"
                   />
