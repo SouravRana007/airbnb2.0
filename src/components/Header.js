@@ -69,7 +69,7 @@ function Header({ placeholder }) {
           onChange={(e) => setSearchInput(e.target.value)}
           className="pl-5 bg-transparent outline-none flex-grow text-sm text-gray-600 placeholder-gray-400"
           type="text"
-          placeholder={placeholder || "Start your search"}
+          placeholder={placeholder || "Search"}
         />
         <SearchIcon
           onClick={search}
@@ -109,17 +109,17 @@ function Header({ placeholder }) {
           <UserIcon className="h-6 cursor-pointer " onClick={register} />
         </div>
       </div>
-      <div className="flex  mt-4 items-center space-x-2 justify-end text-center  ">
+      <div className="flex  mt-4 flex-row   justify-center items-center  ">
         <p
-          className="md:hidden px-2 py-2  border-2 border-red-400  rounded-lg cursor-pointer  hover:text-red-400"
+          className="md:hidden px-2 py-2 rounded-2xl cursor-pointer font-semibold text-red-500"
           onClick={session?.user?.name ? null : () => register()}
         >
-          {session?.user?.name ? ` ${session?.user?.name}` : "Airbnb your Home"}
+          {session?.user?.name ? `${session?.user?.name}` : "Airbnb your Home"}
         </p>
         {session?.user?.name && (
           <p
             onClick={signOut}
-            className=" px-2 py-1  md:hidden hover:text-red-500 rounded-xl "
+            className=" px-2 py-1  md:hidden font-semibold text-red-500 rounded-xl "
           >
             Logout
           </p>
