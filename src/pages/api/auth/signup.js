@@ -11,17 +11,27 @@ export default async function handler(req, res) {
   await dbConnect();
 
   const { name, email, password } = req.body;
+  if (password.length < 6) {
+    res
+      .status(400)
+      .json({ message: "Password should be minimum of 6 caharcters" });
+  }
 
   const existingUser = await User.findOne({ email });
+  if (password.length < 6) {
+    res
+      .status(400)
+      .json({ message: "Password should be minimum of 6 caharcters" });
+  }
   if (existingUser) {
     return res.status(422).json({ message: "User already exists" });
   }
 
-  const hashedPassword = await bcrypt.hash(password, 12);
+  const hashedPassword = await bcrypt.hash(password, 10);
 
   const newUser = new User({
-    name,
-    email,
+    name: name,
+    email: email,
     password: hashedPassword,
   });
 

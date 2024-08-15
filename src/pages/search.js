@@ -3,13 +3,13 @@ import Header from "../components/Header";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import InfoCard from "@/components/InfoCard";
-// import Maps from "@/components/Maps";
+import Maps from "@/components/Maps";
 
 function Search({ searchResults }) {
-  console.log(searchResults);
+  // console.log(searchResults);
   const router = useRouter();
   const { location, startDate, endDate, noOfGuests } = router.query;
-  console.log(router.query);
+  // console.log(router.query);
   const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
   const ranges = `${formattedStartDate} - ${formattedEndDate}`;
@@ -51,7 +51,7 @@ function Search({ searchResults }) {
           </div>
         </section>
         <section className="hidden xl:inline-flex xl:min-w-[600px]">
-          {/* <Maps /> */}
+          <Maps searchResults={searchResults} />
         </section>
       </main>
       <Footer />
@@ -61,7 +61,7 @@ function Search({ searchResults }) {
 
 export default Search;
 export async function getServerSideProps() {
-  const searchResults = await fetch("https://www.jsonkeeper.com/b/9Y15").then(
+  const searchResults = await fetch("https://www.jsonkeeper.com/b/IQHA").then(
     (res) => res.json()
   );
   return {

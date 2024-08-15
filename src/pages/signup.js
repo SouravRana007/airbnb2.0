@@ -13,17 +13,34 @@ function Signup() {
   });
   const [error, setError] = useState({});
   const handleOnchange = (e) => {
+    const { name, value } = e.target;
     setformData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
   const router = useRouter();
   const registerUser = async (e) => {
     // console.log("register clicker");
+    const Validationerror = {};
     e.preventDefault();
-    setError(Validation(formData));
-    console.log(formData);
+    // console.log(formData);
+
+    if (!formData.name.trim()) {
+      Validationerror.name = "Name is required";
+    }
+    if (!formData.email.trim()) {
+      Validationerror.email = "e-mail is required";
+    } else if (!!/[^\s@]+@[^\s@]+\.[^\s@]+/.test(formData.email)) {
+      Validationerror.email = "E-mail is invalid";
+    }
+    if (!formData.password.trim()) {
+      Validationerror.FormData = "Password is required";
+    } else if (formData.password.length < 6) {
+      Validationerror.password = "Minimum six character required";
+      setError(Validationerror);
+    }
+
     // if (Object.keys(error).length > 0) {
     //   setError(error);
     // } else {
@@ -33,12 +50,12 @@ function Signup() {
     setformData({
       name: "",
       email: "",
-      age: "",
+      password: "",
     });
     setError({
       name: "",
       email: "",
-      age: "",
+      password: "",
     });
     // }
     try {
