@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import { useRouter } from "next/router";
 import { format } from "date-fns";
 import InfoCard from "@/components/InfoCard";
-import Maps from "@/components/Maps";
+// import Maps from "@/components/Maps";
 
 function Search({ searchResults }) {
   // console.log(searchResults);
@@ -14,7 +14,7 @@ function Search({ searchResults }) {
   const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
   const ranges = `${formattedStartDate} - ${formattedEndDate}`;
   return (
-    <div>
+    <div className="">
       <Header placeholder={`${location} | ${ranges} | ${noOfGuests} guests`} />
       <main className="flex">
         <section className="flex-grow pt-14 px-6">
@@ -25,7 +25,7 @@ function Search({ searchResults }) {
             {" "}
             Stays in {location}
           </h1>
-          <div className=" hidden lg:inline-flex mb-5 text-gray-800 whitespace-nowrap space-x-4">
+          <div className=" hidden lg:inline-flex mb-5 text-gray-800 whitespace-nowrap space-x-3">
             <p className="button">Cancellation Flexibility</p>
             <p className="button">Type of Place</p>
             <p className="button">Price</p>
@@ -50,9 +50,9 @@ function Search({ searchResults }) {
             )}
           </div>
         </section>
-        <section className="hidden xl:inline-flex xl:min-w-[600px]">
+        {/* <section className="hidden xl:inline-flex xl:min-w-[600px]">
           <Maps searchResults={searchResults} />
-        </section>
+        </section> */}
       </main>
       <Footer />
     </div>
@@ -61,7 +61,7 @@ function Search({ searchResults }) {
 
 export default Search;
 export async function getServerSideProps() {
-  const searchResults = await fetch("https://www.jsonkeeper.com/b/IQHA").then(
+  const searchResults = await fetch("https://www.jsonkeeper.com/b/EVG4").then(
     (res) => res.json()
   );
   return {
