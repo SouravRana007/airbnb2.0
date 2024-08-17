@@ -50,9 +50,9 @@ function Search({ searchResults }) {
             )}
           </div>
         </section>
-        {/* <section className="hidden xl:inline-flex xl:min-w-[600px]">
-          <Maps searchResults={searchResults} />
-        </section> */}
+        <section className="hidden xl:inline-flex xl:min-w-[600px]">
+          {/* <Maps searchResults={searchResults} /> */}
+        </section>
       </main>
       <Footer />
     </div>
